@@ -89,7 +89,7 @@ DB_PASSWORD=your_password_here
 
 ### 7. Run Database Migrations
 
-Run the migrations to create the necessary database tables:
+Run the migrations to create the necessary database tables. Laravel will prompt to create the database if it doesn't exist:
 
 ```bash
 php artisan migrate

@@ -77,7 +77,7 @@ class EventController extends Controller
             'total_capacity' => '',
             'status' => 'in:upcoming,ongoing,completed,cancelled',
         ]);
-        
+
         $event->update($request->all());
 
         return redirect()->route('events.index')->with('status', __('Event updated successfully.'));

@@ -3,7 +3,7 @@
 @section('content')
 <div class="min-h-screen from-indigo-100 via-white to-indigo-50 flex items-center justify-center px-4">
     <div class="bg-white/80 backdrop-blur-lg shadow-2xl rounded-2xl p-10 w-full max-w-md border border-gray-200">
-        <!-- Logo or App Title -->
+
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Welcome Back</h1>
             <p class="text-gray-500 mt-2 text-sm">Sign in to continue to your dashboard</p>

@@ -20,7 +20,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo/Brand -->
-                    <a href="{{ url('/') }}"
+                    <a href="{{ url('/home') }}"
                         class="text-xl font-semibold text-gray-800 hover:text-gray-600 transition">
                         {{ config('app.name', 'Laravel') }}
                     </a>

@@ -10,9 +10,33 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('events.index', ['events' => Event::orderBy('created_at', 'desc')->get()]);
+        $query = Event::query();
+
+        // Search functionality
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('venue', 'like', "%{$search}%")
+                    ->orWhere('event_code', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by status
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', $request->status);
+        }
+
+        $events = $query->orderBy('created_at', 'desc')->paginate(10)->withQueryString();
+
+        // Generate event code for create drawer
+        $lastEvent = Event::orderBy('id', 'desc')->first();
+        $eventCode = 'EVT-'.str_pad($lastEvent ? $lastEvent->id + 1 : 1, 5, '0', STR_PAD_LEFT);
+
+        return view('events.index', compact('events', 'eventCode'));
     }
 
     /**
@@ -21,7 +45,8 @@ class EventController extends Controller
     public function create()
     {
         $lastEvent = Event::orderBy('id', 'desc')->first();
-        $eventCode = 'EVT-' . str_pad($lastEvent ? $lastEvent->id + 1 : 1, 5, '0', STR_PAD_LEFT);
+        $eventCode = 'EVT-'.str_pad($lastEvent ? $lastEvent->id + 1 : 1, 5, '0', STR_PAD_LEFT);
+
         return view('events.create', compact('eventCode'));
     }
 

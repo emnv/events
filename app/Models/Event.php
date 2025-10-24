@@ -19,4 +19,12 @@ class Event extends Model
         'total_capacity',
         'status',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'start_datetime' => 'datetime',
+            'end_datetime' => 'datetime',
+        ];
+    }
 }

@@ -4,20 +4,23 @@ A comprehensive event management application built with Laravel 12 and Tailwind 
 
 ## Features
 
-- **Event Management**: Create, read, update, and delete events
+- **Create Events**: Add new events with detailed information
+- **View Events**: Browse all events with organized listing
+- **Edit Events**: Update event details and information
+- **Delete Events**: Remove events from the system
 - **Event Scheduling**: Set start and end dates/times for events
-- **Capacity Tracking**: Monitor event capacity and attendance
+- **Venue Management**: Track event locations
+- **Capacity Tracking**: Monitor event capacity limits
 - **Status Management**: Track event status (upcoming, ongoing, completed, cancelled)
-- **Auto-generated Event Codes**: Unique event codes automatically generated
-- **User Authentication**: Secure user login and registration
-- **Responsive Design**: Modern UI with Tailwind CSS
+- **Auto-generated Event Codes**: Unique event codes automatically generated (EVT-00001, EVT-00002, etc.)
+- **Responsive Design**: Modern UI with Tailwind CSS that works on all devices
 
 ## Tech Stack
 
 - **Backend**: Laravel 12 (PHP 8.4)
 - **Frontend**: Tailwind CSS v4, Vite
 - **Database**: MySQL
-- **Authentication**: Laravel Breeze/Sanctum
+- **Authentication**: Laravel built-in authentication
 
 ## Requirements
 
@@ -84,25 +87,7 @@ DB_USERNAME=root
 DB_PASSWORD=your_password_here
 ```
 
-### 7. Create Database
-
-Create the database in MySQL:
-
-```sql
-CREATE DATABASE events_mgmt_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-Or use the command line:
-
-```bash
-# Windows (if MySQL is in PATH)
-mysql -u root -p -e "CREATE DATABASE events_mgmt_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-
-# Linux/Mac
-mysql -u root -p -e "CREATE DATABASE events_mgmt_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-```
-
-### 8. Run Database Migrations
+### 7. Run Database Migrations
 
 Run the migrations to create the necessary database tables:
 

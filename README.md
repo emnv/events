@@ -1,61 +1,291 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Events Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive event management application built with Laravel 12 and Tailwind CSS. This system allows users to create, manage, and track events with features like event scheduling, capacity management, and status tracking.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Create Events**: Add new events with detailed information
+- **View Events**: Browse all events with organized listing
+- **Edit Events**: Update event details and information
+- **Delete Events**: Remove events from the system
+- **Event Scheduling**: Set start and end dates/times for events
+- **Venue Management**: Track event locations
+- **Capacity Tracking**: Monitor event capacity limits
+- **Status Management**: Track event status (upcoming, ongoing, completed, cancelled)
+- **Auto-generated Event Codes**: Unique event codes automatically generated (EVT-00001, EVT-00002, etc.)
+- **Responsive Design**: Modern UI with Tailwind CSS that works on all devices
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend**: Laravel 12 (PHP 8.4)
+- **Frontend**: Tailwind CSS v4, Vite
+- **Database**: MySQL
+- **Authentication**: Laravel built-in authentication
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Before you begin, ensure you have the following installed on your system:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **PHP**: >= 8.4
+- **Composer**: Latest version
+- **Node.js**: >= 18.x
+- **npm**: >= 9.x
+- **MySQL**: >= 8.0 or MariaDB >= 10.3
+- **Git**: Latest version
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+Follow these steps to get the application up and running:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone the Repository
 
-### Premium Partners
+```bash
+git clone https://github.com/emnv/events.git
+cd events
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install JavaScript Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment Configuration
+
+Copy the `.env.example` file to `.env`:
+
+```bash
+# Windows (PowerShell)
+copy .env.example .env
+
+# Linux/Mac
+cp .env.example .env
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Configure Database
+
+Open the `.env` file and update the database configuration:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=events_mgmt_db
+DB_USERNAME=root
+DB_PASSWORD=your_password_here
+```
+
+### 7. Run Database Migrations
+
+Run the migrations to create the necessary database tables. Laravel will prompt to create the database if it doesn't exist:
+
+```bash
+php artisan migrate
+```
+
+This will create the following tables:
+- `users` - User accounts
+- `events` - Event information
+- `cache` - Application cache
+- `jobs` - Queue jobs
+- `sessions` - User sessions
+
+### 9. Seed Database (Optional)
+
+Populate the database with sample data:
+
+```bash
+php artisan db:seed
+```
+
+This will create:
+- A test user with email: `test@example.com` and password: `password`
+
+### 10. Build Frontend Assets
+
+Build the Tailwind CSS and JavaScript assets:
+
+```bash
+# For production
+npm run build
+
+# For development (with hot reload)
+npm run dev
+```
+
+## Running the Application
+
+### Development Server
+
+Start the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+The application will be available at: `http://localhost:8000`
+
+If you're using `npm run dev`, open a second terminal and run:
+
+```bash
+npm run dev
+```
+
+This provides hot module replacement for faster development.
+
+### Access the Application
+
+1. **Home Page**: `http://localhost:8000`
+2. **Login**: `http://localhost:8000/login`
+3. **Register**: `http://localhost:8000/register`
+4. **Events**: `http://localhost:8000/events` (requires authentication)
+
+### Default Test Account
+
+If you ran the seeder:
+- **Email**: test@example.com
+- **Password**: password
+
+## Common Commands
+
+### Clear Cache
+
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+### Clear All Caches at Once
+
+```bash
+php artisan optimize:clear
+```
+
+### Run Tests
+
+```bash
+php artisan test
+```
+
+### Code Formatting
+
+```bash
+./vendor/bin/pint
+```
+
+### Create New Migration
+
+```bash
+php artisan make:migration create_table_name
+```
+
+### Create New Model
+
+```bash
+php artisan make:model ModelName -mfc
+# -m: migration
+# -f: factory
+# -c: controller
+```
+
+## Project Structure
+
+```
+events/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       └── EventController.php
+│   └── Models/
+│       ├── Event.php
+│       └── User.php
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   ├── css/
+│   │   └── app.css          # Tailwind CSS
+│   ├── js/
+│   │   └── app.js
+│   └── views/
+│       ├── events/
+│       │   ├── index.blade.php
+│       │   ├── create.blade.php
+│       │   └── edit.blade.php
+│       └── layouts/
+│           └── app.blade.php
+├── routes/
+│   └── web.php
+└── tests/
+```
+
+## Troubleshooting
+
+### Issue: "Vite manifest not found"
+
+**Solution**: Run `npm run build` or `npm run dev`
+
+### Issue: "Access denied for user"
+
+**Solution**: Check your database credentials in `.env`
+
+### Issue: "Class not found"
+
+**Solution**: Run `composer dump-autoload`
+
+### Issue: Styles not applying
+
+**Solution**: 
+1. Make sure Vite is running: `npm run dev`
+2. Or build assets: `npm run build`
+3. Clear browser cache
+
+### Issue: "No application encryption key has been specified"
+
+**Solution**: Run `php artisan key:generate`
+
+## Development Workflow
+
+1. Start the development server: `php artisan serve`
+2. Start Vite for hot reload: `npm run dev`
+3. Make your changes
+4. Test your changes
+5. Run code formatter: `./vendor/bin/pint`
+6. Run tests: `php artisan test`
+7. Commit your changes
+
+## Deployment
+
+For production deployment:
+
+1. Set `APP_ENV=production` in `.env`
+2. Set `APP_DEBUG=false` in `.env`
+3. Run `composer install --optimize-autoloader --no-dev`
+4. Run `npm run build`
+5. Run `php artisan config:cache`
+6. Run `php artisan route:cache`
+7. Run `php artisan view:cache`
+8. Set proper file permissions
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
